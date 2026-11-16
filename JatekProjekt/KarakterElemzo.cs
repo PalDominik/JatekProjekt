@@ -19,31 +19,76 @@ namespace JatekProjekt
 
         public List<string> MagasSzintuKarakterek()
         {
-            throw new NotImplementedException();
+            //80-as szint feletiek neveinek listázása
+            List<string> magasSzintuNevek = new List<string>();
+            foreach(var karakter in karakterek)
+            {
+                if(karakter.Szint >= 80)
+                {
+                    magasSzintuNevek.Add(karakter.Nev);
+                }
+            }
+            return magasSzintuNevek;
         }
 
         // Gyűjtsd ki az összes "Mágus" osztályú karakter nevét!
         public List<string> MagusOsztalyuNevek()
         {
-            throw new NotImplementedException();
+            List<string> magusNevek = new List<string>();
+            foreach(var karakter in karakterek)
+            {
+                if (karakter.Osztaly == "Mágus")
+                {
+                    magusNevek.Add(karakter.Nev);
+                }
+            }
+
+            return magusNevek;
         }
 
         // Add vissza az összes karakter nevét egy egyszerű listában!
         public List<string> OsszesKarakterNevListaba()
         {
-            throw new NotImplementedException();
+            List<string> OsszKarakterNevLista = new List<string>();
+            foreach (var karakter in karakterek)
+            {
+                OsszKarakterNevLista.Add(karakter.Nev);
+            }
+
+            return OsszKarakterNevLista;
         }
 
         // Szűrd ki azokat a karaktereket, amelyek valamelyik "EU-"-val kezdődő szerveren játszanak, és add vissza a nevüket listában!
         public List<string> EuSzerveresKarakterek()
         {
-            throw new NotImplementedException();
+            List<string> euKarakterNevek = new List<string>();
+            /*
+            foreach (var karakter in karakterek)
+            {
+                if(karakter.Szerver.StartWith("EU-")){
+                    euKarakterNevek.Add(karakter.Nev);
+                }
+            }
+            */
+
+            euKarakterNevek = karakterek.FindAll(k => k.Szerver.StartsWith("EU-")).ConvertAll(k => k.Nev);
+
+            return euKarakterNevek;
         }
 
         // Válaszd ki az összes egyedi (különböző) szervernevet, ahol a karakterek játszanak (Distinct segítségével)!
         public List<string> EgyediSzerverNevek()
         {
-            throw new NotImplementedException();
+            List<string> szerverNevek = new List<string>();
+            foreach (var karakter in karakterek)
+            {
+                if (!szerverNevek.Contains(karakter.Szerver))
+                {
+                    szerverNevek.Add(karakter.Szerver);
+                }
+            }
+
+            return szerverNevek;
         }
 
 
